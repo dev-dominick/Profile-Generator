@@ -59,14 +59,28 @@ const questions = [
   },
 ];
 
+function generateHTML(answers) {
+  return `  <div class="card" style="width: 18rem;">
+    
+    <div class="card-body bg-primary">
+      <h5 class="card-title text-light">${questions.name}</h5>
+      <p class="card-text text-light">${questions.employeeTitle}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${questions.iD}</li>
+      <li class="list-group-item">${questions.email}</li>
+      <li class="list-group-item">${questions.officeNumber}</li>
+    </ul>
 
+  </div>`
+};
 
 
 function init() {
   inquirer.prompt(questions).then((answers) => {
     console.log(answers);
-
-    fs.writeFile("README.md", generateMarkdown(answers), (err) => {
+//fix whatever is making this make new html file
+    fs.appendFileSync("index.html", generateHTML(answers), (err) => {
       if (err) {
         console.log(err);
         return;
