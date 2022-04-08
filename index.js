@@ -7,80 +7,72 @@ const inquirer = require("inquirer");
 // WHEN I am prompted for my team members and their information
 const questions = [
   {
-    type: "chec",
-    message: "What is the title of your project?",
-    name: "title",
-  },
-  {
-    type: "input",
-    message:
-      "Provide a short description explaining the what, why, and how of your project.?",
-    name: "description",
-  },
-  // {
-  //   type: "checkbox",
-  //   message: "Select which contents you would like in your Table of Contents",
-  //   choices: [
-  //     "[Installation](#Installation)",
-  //     "[Usage](#usage)",
-  //     "[Credits](#Credits)",
-  //     "[License](#License)",
-  //   ],
-  //   name: "tableOfContents",
-  // },
-  {
-    type: "input",
-    message: "What are the steps required to install your project?",
-    name: "installation",
-  },
-  {
-    type: "input",
-    message: "Provide instructions and examples for use of application.",
-    name: "usage",
-  },
-  {
-    type: "input",
-    message: "Please give credit to any resources you have used?",
-    name: "credits",
-  },
-  {
     type: "list",
-    message: "Please select a license type to include.",
-    choices: [
-      "MIT License",
-      "Apache 2.0 License",
-      "Boost Software License 1.0",
-    ],
-    name: "license",
+    message: "Which employee profile type would you like to create?",
+    choices: ["Engineer", "Intern", "Manager"],
+    name: "employeeTitle",
   },
   {
     type: "input",
-    message:
-      "If you want others to contribute, please explain how they could do so.",
-    name: "contribute",
+    message: "What is your employee ID?",
+    name: "iD",
   },
   {
     type: "input",
-    message: "List any tests you have done on your application?",
-    name: "test",
-  },
-  {
-    type: "input",
-    message:
-      "How would you like others to contact you with questions? Email, GitHub, etc...",
-    name: "questions",
-  },
-  {
-    type: "input",
-    message: "Please enter your email.",
+    message: "What is your email address?",
     name: "email",
   },
   {
     type: "input",
-    message: "Please enter your github.",
-    name: "github",
+    message: "What is your office number?",
+    name: "officeNumber",
+    when: (answers) => {
+      if (answers.employeeTitle === "Manager") {
+        return true;
+      }
+    },
+  },
+  {
+    type: "input",
+    message: "What is your GitHub username?",
+    name: "gitHub",
+    when: (answers) => {
+      if (answers.employeeTitle === "Engineer") {
+        return true;
+      }
+    },
+  },
+  {
+    type: "list",
+    message: "What school are you attending?",
+    name: "school",
+    when: (answers) => {
+      if (answers.employeeTitle === "Intern") {
+        return true;
+      }
+    },
   },
 ];
+
+
+
+
+function init() {
+  inquirer.prompt(questions).then((answers) => {
+    console.log(answers);
+
+    fs.writeFile("README.md", generateMarkdown(answers), (err) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        console.log("Success!");
+      }
+    });
+  });
+}
+
+init();
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
 // WHEN I click on an email address in the HTML
 // THEN my default email program opens and populates the TO field of the email with the address
