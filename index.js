@@ -59,7 +59,7 @@ const questions = [
   },
 ];
 
-function generateHTML(answers) {
+function generateHTML() {
   return `<!DOCTYPE html>
 <html lang="en">
 
@@ -81,21 +81,7 @@ function generateHTML(answers) {
     </div>
   </nav>
 
-
-  <div class="card" style="width: 18rem;">
-    <div class="card-body bg-primary">
-      <h5 class="card-title text-light">${answers.name}</h5>
-      <p class="card-text text-light">Position: ${answers.employeeTitle}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Office Number: ${answers.iD}</li>
-      <li class="list-group-item">${answers.email}</li>
-      <li class="list-group-item">${answers.officeNumber}, ${answers.gitHub}</li>
-    </ul>
-  </div>
-
-
-
+  ${card.engineer}
 
 </body>
 
@@ -108,7 +94,7 @@ function init() {
   inquirer.prompt(questions).then((answers) => {
     console.log(answers);
 //fix whatever is making this make new html file
-    fs.writeFileSync("index.html", generateHTML(answers), (err) => {
+    fs.writeFileSync("index.html", generateHTML(), (err) => {
       if (err) {
         console.log(err);
         return;
