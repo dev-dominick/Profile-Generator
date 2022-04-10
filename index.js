@@ -1,6 +1,11 @@
+const generateCards = require('./src/generateCards');
 const fs = require("fs");
 const inquirer = require("inquirer");
-
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+const employeeArray = [];
 //todo set a require generate html file
 
 // GIVEN a command-line application that accepts user input
