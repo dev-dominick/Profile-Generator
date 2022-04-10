@@ -81,7 +81,26 @@ function generateHTML() {
     </div>
   </nav>
 
-  ${card.engineer}
+  <nav class="my-navbar navbar navbar-dark bg-danger">
+    <div class="container-fluid justify-content-center">
+      <span class="navbar-brand mb-0 h1 header ">My Team</span>
+    </div>
+  </nav>
+
+
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body bg-primary">
+      <h5 class="card-title text-light">Name</h5>
+      <p class="card-text text-light">Position</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">employee id</li>
+      <li class="list-group-item">email</li>
+      <li class="list-group-item">officenumber, github, school</li>
+    </ul>
+  </div>
+
 
 </body>
 
