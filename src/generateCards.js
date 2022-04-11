@@ -1,8 +1,9 @@
 //manager card
 const cardManager = function (manager) {
+  console.log({manager});
   return `  <div class="card" style="width: 18rem;">
     <div class="card-body bg-primary">
-      <h5 class="card-title text-light">${manager.getname}</h5>
+      <h5 class="card-title text-light">${manager.name}</h5>
       <p class="card-text text-light">Manager</p>
     </div>
     <ul class="list-group list-group-flush">
@@ -13,15 +14,18 @@ const cardManager = function (manager) {
   </div>`;
 }
 
+//create function, switch statement for cardManager, cardIntern, cardEngineer
+
 const teamBuilder = (employee) => {
+  console.log({employee});
   cardArray = [];
-  if (role = "manager") {
+  if (employee.employeeTitle = "Manager") {
     var managerCard = cardManager(employee)
-    console.log(LockManager);
+    console.log(cardManager);
   }
   cardArray.push(managerCard);
   console.log(managerCard);
-  const buildTeam = generateHTML(cardManager);
+  const buildTeam = generateHTML(managerCard);
   return buildTeam
 }
 
@@ -47,7 +51,7 @@ function generateHTML(manager) {
     </div>
   </nav>
 
-${cardManager}
+${manager}
 
 
 
