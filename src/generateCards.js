@@ -58,4 +58,4 @@ ${cardManager}
 </html>`;
 };
 
-module.exports = generateHTML;
+module.exports = teamBuilder;
