@@ -20,7 +20,7 @@ To initialize this app, you start by running the index.js file in your integrate
 
 Below is a video of of how to start, run, and view the app. 
 
-
+      https://watch.screencastify.com/v/QoiiAzyElsKiBzsmzHy7
 
 ## Credits
 
