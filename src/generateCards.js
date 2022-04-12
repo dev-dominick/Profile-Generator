@@ -48,11 +48,13 @@ const cardIntern = function (intern) {
 };
 
 //create function, switch statement for cardManager, cardIntern, cardEngineer
+let teamCards = [];
+
 
 const teamBuilder = (employee) => {
   console.log({ employee });
 
-  let teamCards = []; //all employee cards returned as a string
+  //all employee cards returned as a string
 
   if (employee.employeeTitle == "Manager") {
     var managerCard = cardManager(employee);
@@ -116,4 +118,5 @@ ${data}
 </html>`;
 }
 
+module.exports = teamCards;
 module.exports = teamBuilder;
