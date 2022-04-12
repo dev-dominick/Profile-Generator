@@ -1,11 +1,11 @@
-const generateCards = require('./src/generateCards');
+const teamBuilder = require("./src/generateCards");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
-const employeeArray = [];
+let employeeArray;
 
 //todo set a require generate html file
 
@@ -54,7 +54,7 @@ const questions = [
     },
   },
   {
-    type: "list",
+    type: "input",
     message: "What school are you attending?",
     name: "school",
     when: (answers) => {
@@ -68,27 +68,50 @@ const questions = [
     message: "Would you like to add another employee?",
     choices: ["Yes", "No"],
     name: "option",
-  }
-
-
+  },
 
 ];
 
-// answers = managerAnswers => {
-//     const { name, iD, email, officeNumber} = managerAnswers;
-//     const manager = new Manager (name, iD, email, officeNumber);
 
-//     employeeArray.push(manager);
-//     console.log(manager);
-//   }
 
 
 
 function init() {
   inquirer.prompt(questions).then((answers) => {
-    console.log(answers);
-//fix whatever is making this make new html file
-    fs.writeFileSync("index.html", generateCards(answers), (err) => {
+    switch (answers.positionTitle) {
+      case "Manager":
+        employeeArray = new Manager(
+          answers.name,
+          answers.iD,
+          answers.email,
+          answers.officeNumber
+        )
+        break;
+      case "Engineer":
+        employeeArray = new Engineer(
+          answers.name,
+          answers.iD,
+          answers.email,
+          answers.gitHub
+        )
+        break;
+      case "Intern":
+        employeeArray = new Intern(
+          answers.name,
+          answers.iD,
+          answers.email,
+          answers.School
+        )
+        break;
+      default:
+        break;
+    }
+
+    if (answers.option == "Yes") {
+      init()
+    } 
+    // fix whatever is making this make new html file
+    fs.writeFileSync("index.html", teamBuilder(answers), (err) => {
       if (err) {
         console.log(err);
         return;
@@ -100,6 +123,3 @@ function init() {
 }
 
 init();
-
-
-

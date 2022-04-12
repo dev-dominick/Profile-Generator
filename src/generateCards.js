@@ -1,5 +1,5 @@
 //manager card
-//one big function, 
+//one big function,
 const cardManager = function (manager) {
   console.log({ manager });
   return `  <div class="card" style="width: 18rem;">
@@ -37,7 +37,7 @@ const cardIntern = function (intern) {
   return `  <div class="card" style="width: 18rem;">
     <div class="card-body bg-primary">
       <h5 class="card-title text-light">${intern.name}</h5>
-      <p class="card-text text-light">Engineer</p>
+      <p class="card-text text-light">Intern</p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${intern.iD}</li>
@@ -50,35 +50,40 @@ const cardIntern = function (intern) {
 //create function, switch statement for cardManager, cardIntern, cardEngineer
 
 const teamBuilder = (employee) => {
-
   console.log({ employee });
 
   let teamCards = []; //all employee cards returned as a string
 
-  if ((employee.employeeTitle == "Manager")) {
+  if (employee.employeeTitle == "Manager") {
     var managerCard = cardManager(employee);
     teamCards.push(managerCard);
     console.log(cardManager);
   }
-  if ((employee.employeeTitle == "Engineer")) {
+  if (employee.employeeTitle == "Engineer") {
     var engineerCard = cardEngineer(employee);
     teamCards.push(engineerCard);
     console.log(cardEngineer);
   }
+  if (employee.employeeTitle == "Intern") {
+    var internCard = cardIntern(employee);
+    teamCards.push(internCard);
+    console.log(cardIntern);
+  }
   // cardArray.push(managerCard, engineerCard);
-
+    console.log("this is team cards", teamCards);
+    console.log("end team cards");
   // console.log(managerCard, engineerCard);
 
   // console.log(JSON.stringify(cardArray));
   console.log("this is team cards", teamCards);
   console.log("end");
 
-  
- const buildTeam = generateHTML(teamCards);
- return buildTeam;
+  const buildTeam = generateHTML(teamCards);
+  return buildTeam;
 };
 
 function generateHTML(data) {
+  console.log(data);
   return `<!DOCTYPE html>
 <html lang="en">
 
