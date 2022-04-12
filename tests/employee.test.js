@@ -1,8 +1,6 @@
-const Employee = require("../lib/Employee");
+const Employee = require("../lib/Employee.js");
 
-test("user inputs id", () => {
-  const iD = 12;
-  const worker = new Employee(iD);
-  expect(worker.iD).toBe(iD)
-})
-
+test("testing employee parameters", () => {
+  const employee = new Employee("dom", "1", "dom@test.net");
+  expect(employee.getName()).toBe("dom");
+});
