@@ -24,7 +24,7 @@ Below is a video of of how to start, run, and view the app.
 
 ## Credits
 
-      Isaak - https://github.com/CallMeIce Kyle - https://github.com/kgiunta    
+   Isaak - https://github.com/CallMeIce Kyle - https://github.com/kgiunta    
 
 ## License
 
