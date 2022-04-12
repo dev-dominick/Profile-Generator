@@ -1,6 +1,7 @@
 //manager card
+//one big function, 
 const cardManager = function (manager) {
-  console.log({manager});
+  console.log({ manager });
   return `  <div class="card" style="width: 18rem;">
     <div class="card-body bg-primary">
       <h5 class="card-title text-light">${manager.name}</h5>
@@ -12,24 +13,72 @@ const cardManager = function (manager) {
       <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
     </ul>
   </div>`;
-}
+};
+
+//engineer card
+const cardEngineer = function (engineer) {
+  console.log({ engineer });
+  return `  <div class="card" style="width: 18rem;">
+    <div class="card-body bg-primary">
+      <h5 class="card-title text-light">${engineer.name}</h5>
+      <p class="card-text text-light">Engineer</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID: ${engineer.iD}</li>
+      <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+      <li class="list-group-item">GitHub: <a href="${engineer.gitHub}">${engineer.gitHub}</a></li>
+    </ul>
+  </div>`;
+};
+
+//Intern card
+const cardIntern = function (intern) {
+  console.log({ intern });
+  return `  <div class="card" style="width: 18rem;">
+    <div class="card-body bg-primary">
+      <h5 class="card-title text-light">${intern.name}</h5>
+      <p class="card-text text-light">Engineer</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID: ${intern.iD}</li>
+      <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+      <li class="list-group-item">School: ${intern.school}</li>
+    </ul>
+  </div>`;
+};
 
 //create function, switch statement for cardManager, cardIntern, cardEngineer
 
 const teamBuilder = (employee) => {
-  console.log({employee});
-  cardArray = [];
-  if (employee.employeeTitle = "Manager") {
-    var managerCard = cardManager(employee)
+
+  console.log({ employee });
+
+  let teamCards = []; //all employee cards returned as a string
+
+  if ((employee.employeeTitle == "Manager")) {
+    var managerCard = cardManager(employee);
+    teamCards.push(managerCard);
     console.log(cardManager);
   }
-  cardArray.push(managerCard);
-  console.log(managerCard);
-  const buildTeam = generateHTML(managerCard);
-  return buildTeam
-}
+  if ((employee.employeeTitle == "Engineer")) {
+    var engineerCard = cardEngineer(employee);
+    teamCards.push(engineerCard);
+    console.log(cardEngineer);
+  }
+  // cardArray.push(managerCard, engineerCard);
 
-function generateHTML(manager) {
+  // console.log(managerCard, engineerCard);
+
+  // console.log(JSON.stringify(cardArray));
+  console.log("this is team cards", teamCards);
+  console.log("end");
+
+  
+ const buildTeam = generateHTML(teamCards);
+ return buildTeam;
+};
+
+function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +100,7 @@ function generateHTML(manager) {
     </div>
   </nav>
 
-${manager}
+${data}
 
 
 
@@ -60,6 +109,6 @@ ${manager}
 </body>
 
 </html>`;
-};
+}
 
 module.exports = teamBuilder;
