@@ -26,7 +26,7 @@ const cardEngineer = function (engineer) {
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${engineer.iD}</li>
       <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-      <li class="list-group-item">GitHub: <a href="${engineer.gitHub}">${engineer.gitHub}</a></li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub}">${engineer.gitHub}</a></li>
     </ul>
   </div>`;
 };
